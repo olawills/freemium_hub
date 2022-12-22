@@ -1,4 +1,4 @@
-package com.example.freemium_hub
+package com.freemium_hub
 
 import io.flutter.embedding.android.FlutterActivity
 

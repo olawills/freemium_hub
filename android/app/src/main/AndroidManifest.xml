@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.freemium_hub">
+    package="com.freemium_hub">
    <application
-        android:label="freemium_hub"
+        android:label="Freemium Hub"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
