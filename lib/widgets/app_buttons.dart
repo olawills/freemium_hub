@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:freemium_hub/styles/colors.dart';
 
 class FreemiumButtons extends StatelessWidget {
   final VoidCallback onPressed;
   final Size size;
   final Widget child;
+  
 
   const FreemiumButtons({
     Key? key,
     required this.onPressed,
     required this.size,
     required this.child,
+    
   }) : super(key: key);
 
   @override
@@ -18,7 +19,6 @@ class FreemiumButtons extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: DarkThemeColors.bodyColor,
         shape: const CircleBorder(),
         textStyle: const TextStyle(
           fontSize: 15,
@@ -28,5 +28,6 @@ class FreemiumButtons extends StatelessWidget {
       ),
       child: child,
     );
+    
   }
 }

@@ -39,6 +39,11 @@ class DarkThemeData {
       color: DarkThemeColors.iconColor,
     ),
     backgroundColor: DarkThemeColors.bottomNavBarColor,
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        primary: DarkThemeColors.selectedIconColor,
+      ),
+    ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
       backgroundColor: DarkThemeColors.bottomNavBarColor,
       selectedItemColor: DarkThemeColors.selectedIconColor,
@@ -55,10 +60,13 @@ class DarkThemeData {
       ),
       bodyText1: GoogleFonts.roboto(
         color: DarkThemeColors.textColors,
-        fontSize: 25,
+        fontSize: 20,
         fontWeight: FontWeight.w500,
       ),
+      headline4: GoogleFonts.lato(
+        color: DarkThemeColors.textColors,
+        fontSize: 17,
+      ),
     ),
-    
   );
 }

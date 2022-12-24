@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:freemium_hub/widgets/auth_buttons.dart';
 import 'package:freemium_hub/firebase_options.dart';
 import 'package:freemium_hub/themes/theme_data.dart';
 import 'package:freemium_hub/ui/intro_screens/intro_screen.dart';
+import 'package:freemium_hub/ui/screens/auth_page.dart';
 import 'package:freemium_hub/ui/screens/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -37,7 +39,7 @@ class MyApp extends StatelessWidget {
       home: SplashScreen(
         showHome: showHome,
       ),
-      // home: const IntroScreen(),
+      // home: const AuthenticationPage(),
     );
   }
 }

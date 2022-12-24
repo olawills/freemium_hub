@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/intro_screens/intro_screen.dart';
+import 'package:freemium_hub/ui/screens/auth_page.dart';
 import 'package:freemium_hub/ui/screens/home_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
 
@@ -25,8 +26,15 @@ class _SplashScreenState extends State<SplashScreen> {
             },
           )
         : Future.delayed(const Duration(seconds: 2), () {
-            nextPageOnly(context: context, screen: const HomePage());
+            nextPageOnly(
+              context: context,
+              screen: const AuthenticationPage(),
+            );
           });
+
+    // Future.delayed(const Duration(seconds: 2), () {
+    //   nextPageOnly(context: context, screen: const HomePage());
+    // });
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(

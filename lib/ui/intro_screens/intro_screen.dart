@@ -4,6 +4,7 @@ import 'package:freemium_hub/ui/intro_screens/screen_1.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_2.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_3.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_4.dart';
+import 'package:freemium_hub/ui/screens/auth_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
 import 'package:freemium_hub/widgets/app_buttons.dart';
 import 'package:freemium_hub/widgets/widget_extensions.dart';
@@ -17,7 +18,6 @@ class IntroScreen extends StatefulWidget {
 }
 
 class _IntroScreenState extends State<IntroScreen> {
-  // late PageController _pageController;
   final PageController _pageController = PageController();
   final List<Widget> _pages = const [
     FirstPage(),
@@ -69,7 +69,7 @@ class _IntroScreenState extends State<IntroScreen> {
                   controller: _pageController,
                   count: _pages.length,
                   onDotClicked: (index) {
-                    _pageController.initialPage;
+                    _pageController.jumpToPage(index);
                   },
                 ),
                 onLastPage
@@ -77,13 +77,12 @@ class _IntroScreenState extends State<IntroScreen> {
                         onPressed: () async {
                           nextPageOnly(
                             context: context,
-                            screen: const HomePage(),
+                            screen: const AuthenticationPage(),
                           );
                         },
-                        size: const Size(100, 50),
-                        child: Icon(
-                          Icons.arrow_forward,
-                          color: Theme.of(context).iconTheme.color,
+                        size: const Size(80, 50),
+                        child: const Icon(
+                          Icons.check,
                         ),
                       )
                     : FreemiumButtons(
@@ -93,10 +92,9 @@ class _IntroScreenState extends State<IntroScreen> {
                             curve: Curves.easeIn,
                           );
                         },
-                        size: const Size(100, 50),
-                        child: Icon(
+                        size: const Size(80, 50),
+                        child: const Icon(
                           Icons.arrow_forward,
-                          color: Theme.of(context).iconTheme.color,
                         ),
                       )
               ],

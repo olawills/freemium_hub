@@ -6,7 +6,7 @@ class DarkThemeColors {
   static Color textColors = const Color(0xffffffff);
   static Color floatingActionButtonColor = const Color(0xff34284e);
   static Color bodyColor = const Color(0xff020014);
-  static Color iconColor = Colors.white;
+  static Color iconColor = const Color(0xff01b4fe);
   static Color bottomNavBarColor = const Color(0xff1c192d);
   static Color selectedIconColor = const Color(0xff01b4fe);
   static Color unSelectedIconColor = const Color(0xff9a9b9a);

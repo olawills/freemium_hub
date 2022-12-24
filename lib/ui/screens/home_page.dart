@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/nav_pages/app_settings_page.dart';
 import 'package:freemium_hub/ui/nav_pages/downloads_page.dart';
 import 'package:freemium_hub/ui/nav_pages/home.dart';
-import 'package:freemium_hub/ui/nav_pages/login_signup.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -14,14 +14,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final List<Map> _pages = [
     {'icon': Icons.bookmark, 'title': 'Home'},
+    // {'icon': Icons.person, 'title': 'Get Access'},
     {'icon': Icons.download, 'title': 'Downloads'},
-    {'icon': Icons.person, 'title': 'Get Access'},
     {'icon': Icons.settings, 'title': 'Settings'},
   ];
   final List<Widget> screens = const [
     WallpaperHome(),
     WallpaperDownloadsPage(),
-    AuthenticationPage(),
     WallpaperSettings(),
   ];
   int currentIndex = 0;
@@ -35,7 +34,6 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: Container(
           height: 80,
-          margin: const EdgeInsets.all(10),
           child: BottomNavigationBar(
             iconSize: 30,
             onTap: (index) {
