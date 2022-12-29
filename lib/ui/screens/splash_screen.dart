@@ -18,19 +18,17 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    widget.showHome
-        ? Future.delayed(
-            const Duration(seconds: 2),
-            () {
-              nextPageOnly(context: context, screen: const IntroScreen());
-            },
-          )
-        : Future.delayed(const Duration(seconds: 2), () {
-            nextPageOnly(
-              context: context,
-              screen: const AuthenticationPage(),
-            );
-          });
+    Future.delayed(
+      const Duration(seconds: 2),
+      () {
+        widget.showHome
+            ? nextPageOnly(context: context, screen: const IntroScreen())
+            : nextPageOnly(
+                context: context,
+                screen: const AuthenticationPage(),
+              );
+      },
+    );
 
     // Future.delayed(const Duration(seconds: 2), () {
     //   nextPageOnly(context: context, screen: const HomePage());

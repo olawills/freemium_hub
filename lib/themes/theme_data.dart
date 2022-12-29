@@ -67,6 +67,11 @@ class DarkThemeData {
         color: DarkThemeColors.textColors,
         fontSize: 17,
       ),
+      headline5: GoogleFonts.lato(
+        color: DarkThemeColors.selectedIconColor,
+        fontSize: 16,
+        fontWeight: FontWeight.w500,
+      ),
     ),
   );
 }

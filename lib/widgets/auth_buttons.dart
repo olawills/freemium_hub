@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:freemium_hub/ui/screens/email_sign_in_screen.dart';
+import 'package:freemium_hub/ui/screens/email_sign_up_screen.dart';
 import 'package:freemium_hub/widgets/container_divider.dart';
+import 'package:freemium_hub/widgets/new_account_header.dart';
 import 'package:freemium_hub/widgets/sign_up_buttons.dart';
 import 'package:freemium_hub/widgets/terms_and_privacy_widget.dart';
 import 'package:freemium_hub/widgets/widget_extensions.dart';
+import 'package:page_transition/page_transition.dart';
 
 class AuthScreen extends StatefulWidget {
   const AuthScreen({Key? key}) : super(key: key);
@@ -21,27 +25,7 @@ class _AuthScreenState extends State<AuthScreen> {
           children: [
             Container(
               margin: const EdgeInsets.all(10),
-              child: Row(
-                // mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    child: IconButton(
-                      icon: const Icon(
-                        Icons.close,
-                        size: 25,
-                      ),
-                      onPressed: () {
-                        Navigator.pop(context);
-                      },
-                    ),
-                  ),
-                  Text(
-                    'New Account',
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                ],
-              ),
+              child: const NewAccountHeader(text: 'New Account'),
             ),
             SizedBox(height: 20..spacingH),
             Text(
@@ -51,6 +35,7 @@ class _AuthScreenState extends State<AuthScreen> {
             ),
             SizedBox(height: 30..spacingH),
             SignUpButton(
+              onPressed: () {},
               text: 'Sign Up with Facebook',
               child: Icon(
                 FontAwesomeIcons.facebook,
@@ -59,21 +44,56 @@ class _AuthScreenState extends State<AuthScreen> {
               ),
             ),
             SizedBox(height: 20..spacingH),
-            const SignUpButton(
+            SignUpButton(
+              onPressed: () {},
               text: 'Sign Up with Google',
-              child: Icon(
+              child: const Icon(
                 FontAwesomeIcons.google,
+                color: Colors.red,
                 size: 30,
               ),
             ),
             SizedBox(height: 20..spacingH),
             const ContainerDivider(text: 'or'),
             SizedBox(height: 20..spacingH),
-            const SignUpButton(
+            SignUpButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.bottomToTop,
+                    child: const EmailSignUpScreen(),
+                  ),
+                );
+              },
               text: 'Sign Up with Email',
             ),
             SizedBox(height: 20..spacingH),
-            const TermsAndPrivacyWidget()
+            const TermsAndPrivacyWidget(),
+            SizedBox(height: 20..spacingH),
+            const Text(
+              'Already have an account?',
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 16,
+              ),
+            ),
+            SizedBox(height: 20..spacingH),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.bottomToTop,
+                    child: const EmailSignInScreen(),
+                  ),
+                );
+              },
+              child: Text(
+                'SIGN IN',
+                style: Theme.of(context).textTheme.headline5,
+              ),
+            )
           ],
         ),
       ),

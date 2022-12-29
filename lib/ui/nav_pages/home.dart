@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:freemium_hub/ui/screens/categories_wallpaper_screen.dart';
-import 'package:freemium_hub/ui/screens/new_wallpapers_sreen.dart';
+import 'package:freemium_hub/ui/nav_pages/categories_wallpaper_screen.dart';
+import 'package:freemium_hub/ui/nav_pages/new_wallpapers_sreen.dart';
 
 class WallpaperHome extends StatefulWidget {
   const WallpaperHome({Key? key}) : super(key: key);
@@ -11,11 +12,13 @@ class WallpaperHome extends StatefulWidget {
 
 class _WallpaperHomeState extends State<WallpaperHome> {
   final PageController _pageController = PageController();
+  @override
+  void dispose() {
+    super.dispose();
+    _pageController.dispose();
+  }
+
   int pageIndex = 0;
-  final List<Widget> _screens = const [
-    NewWallPaperScreen(),
-    WallpaperCategories(),
-  ];
   bool selected = true;
   bool onLastPage = false;
   @override
@@ -103,21 +106,52 @@ class _WallpaperHomeState extends State<WallpaperHome> {
                 ],
               ),
               Expanded(
-                child: PageView(
-                  controller: _pageController,
-                  // physics: const NeverScrollableScrollPhysics(),
-                  onPageChanged: (int index) {
-                    setState(() {
-                      pageIndex = index;
-                    });
-                  },
-                  children: _screens,
-                ),
+                child: StreamBuilder(
+                    stream: FirebaseFirestore.instance
+                        .collection('new_wallpapers')
+                        .snapshots(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<QuerySnapshot> snapshot) {
+                      // if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
+                      return PageView.builder(
+                          controller: _pageController,
+                          // physics: const BouncingScrollPhysics(),
+                          onPageChanged: (int index) {
+                            setState(() {
+                              pageIndex = index;
+                            });
+                          },
+                          itemCount: 2,
+                          itemBuilder: (BuildContext context, int index) {
+                            return _screensIndex(index, snapshot);
+                          });
+                      // } else {
+                      //   return const CircularProgressIndicator();
+                      // }
+                    }),
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  Widget _screensIndex(int index, AsyncSnapshot<QuerySnapshot> snapshot) {
+    switch (index) {
+      case 0:
+        return NewWallPaperScreen(
+          snapshot: snapshot,
+        );
+        break;
+      case 1:
+        return WallpaperCategories(
+          snapshot: snapshot,
+        );
+        break;
+      default:
+        return const CircularProgressIndicator();
+        break;
+    }
   }
 }

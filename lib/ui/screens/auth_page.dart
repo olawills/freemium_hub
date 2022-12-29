@@ -30,48 +30,76 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
               child: const FlutterLogo(),
             ),
             SizedBox(height: 20..spacingH),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Sign in to enjoy free wallpapers',
-                    style: Theme.of(context).textTheme.headline6,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        Navigator.push(
-                          context,
-                          PageTransition(
-                            type: PageTransitionType.bottomToTop,
-                            child: const AuthScreen(),
-                          ),
-                        );
-                      },
+            // RichText(
+            //   text: TextSpan(
+            //     children: [
+            //       TextSpan(
+            //         text: 'Sign in to enjoy free wallpapers',
+            //         style: Theme.of(context).textTheme.headline6,
+            //         recognizer: TapGestureRecognizer()
+            //           ..onTap = () {
+            //             Navigator.push(
+            //               context,
+            //               PageTransition(
+            //                 type: PageTransitionType.bottomToTop,
+            //                 child: const AuthScreen(),
+            //               ),
+            //             );
+            //           },
+            //       ),
+            //     ],
+            //   ),
+            // ),
+            GestureDetector(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  PageTransition(
+                    type: PageTransitionType.bottomToTop,
+                    child: const AuthScreen(),
                   ),
-                ],
+                );
+              },
+              child: Text(
+                'Sign in to enjoy free wallpapers',
+                style: Theme.of(context).textTheme.headline6,
               ),
             ),
+
             SizedBox(height: 20..spacingH),
             const ContainerDivider(
-              text: 'OR',
+              text: 'or',
             ),
             SizedBox(height: 20..spacingH),
-            RichText(
-              text: TextSpan(
-                children: [
-                  TextSpan(
-                    text: 'Sign in later',
-                    style: Theme.of(context).textTheme.headline6,
-                    recognizer: TapGestureRecognizer()
-                      ..onTap = () {
-                        nextPageOnly(
-                          context: context,
-                          screen: const HomePage(),
-                        );
-                      },
-                  ),
-                ],
+            GestureDetector(
+              onTap: () {
+                nextPageOnly(
+                  context: context,
+                  screen: const HomePage(),
+                );
+              },
+              child: Text(
+                'Sign in later',
+                style: Theme.of(context).textTheme.headline6,
               ),
-            )
+            ),
+            // RichText(
+            //   text: TextSpan(
+            //     children: [
+            //       TextSpan(
+            //         text: 'Sign in later',
+            //         style: Theme.of(context).textTheme.headline6,
+            //         recognizer: TapGestureRecognizer()
+            //           ..onTap = () {
+            //             nextPageOnly(
+            //               context: context,
+            //               screen: const HomePage(),
+            //             );
+            //           },
+            //       ),
+            //     ],
+            //   ),
+            // )
           ],
         ),
       ),
