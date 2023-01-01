@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:freemium_hub/styles/colors.dart';
+import 'package:freemium_hub/ui/screens/wallpaper_view.dart';
+import 'package:freemium_hub/utils/routers.dart';
 
 class NewWallPaperScreen extends StatefulWidget {
   final AsyncSnapshot<QuerySnapshot> snapshot;
@@ -36,7 +38,12 @@ class _NewWallPaperScreenState extends State<NewWallPaperScreen> {
         itemBuilder: (BuildContext context, int index) {
           if (widget.snapshot.hasData) {
             return InkResponse(
-              onTap: () {},
+              onTap: () => nextPage(
+                  context: context,
+                  screen: WallpaperView(
+                    image: widget.snapshot.data!.docs
+                        .elementAt(index)['image_url'],
+                  )),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(5),
                 child: ExtendedImage.network(

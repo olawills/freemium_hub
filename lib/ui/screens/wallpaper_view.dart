@@ -3,10 +3,10 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 
 class WallpaperView extends StatefulWidget {
-  final QueryDocumentSnapshot snapshot;
+  final String image;
   const WallpaperView({
     Key? key,
-    required this.snapshot,
+    required this.image,
   }) : super(key: key);
 
   @override
@@ -31,7 +31,7 @@ class _WallpaperViewState extends State<WallpaperView> {
             height: double.infinity,
             width: double.infinity,
             child: ExtendedImage.network(
-              widget.snapshot.get('image_url'),
+              widget.image,
               fit: BoxFit.cover,
             ),
           ),

@@ -50,13 +50,15 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
               itemBuilder: (BuildContext context, int index) {
                 // if (snapshot.hasData) {
                 return InkResponse(
-                  onTap: () {
+                  onTap: () =>
                     nextPage(
                         context: context,
                         screen: WallpaperView(
-                          snapshot: snapshot.data!.docs.elementAt(index),
-                        ));
-                  },
+                          image: categoryDocuments
+                              ?.elementAt(index)
+                              .get('image_url'),
+                        ))
+                  ,
                   child: Container(
                     margin: const EdgeInsets.all(2),
                     decoration: BoxDecoration(
