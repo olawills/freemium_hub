@@ -12,6 +12,7 @@ environment:
 
 dependencies:
   cached_network_image: ^3.2.1
+  extended_image: ^6.2.1
   cloud_firestore: ^4.3.0
   cupertino_icons: ^1.0.2
   file_picker: ^5.2.4

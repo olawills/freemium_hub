@@ -1,7 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class FavoritePage extends StatelessWidget {
-  const FavoritePage({Key? key}) : super(key: key);
+  // final AsyncSnapshot<QuerySnapshot> snapshot;
+  const FavoritePage({
+    Key? key,
+    // required this.snapshot,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

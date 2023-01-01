@@ -66,11 +66,11 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
               ),
             ),
 
-            SizedBox(height: 20..spacingH),
+            SizedBox(height: 25..spacingH),
             const ContainerDivider(
               text: 'or',
             ),
-            SizedBox(height: 20..spacingH),
+            SizedBox(height: 25..spacingH),
             GestureDetector(
               onTap: () {
                 nextPageOnly(

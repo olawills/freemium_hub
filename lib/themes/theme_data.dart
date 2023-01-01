@@ -72,6 +72,11 @@ class DarkThemeData {
         fontSize: 16,
         fontWeight: FontWeight.w500,
       ),
+      headline3: GoogleFonts.lato(
+        color: DarkThemeColors.textColors,
+        fontSize: 25,
+        fontWeight: FontWeight.w500,
+      ),
     ),
   );
 }
