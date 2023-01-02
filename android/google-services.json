@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "246167719483",
+    "project_id": "freemiumhub-9b488",
+    "storage_bucket": "freemiumhub-9b488.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:246167719483:android:733634c8b68c4ee057161e",
+        "android_client_info": {
+          "package_name": "com.freemium_hub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "246167719483-ogkovkf341ugo80brt65hiujotevv04e.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.freemium_hub",
+            "certificate_hash": "60fc4184a26e5584d3f8a39ea87ebcafddc94ee2"
+          }
+        },
+        {
+          "client_id": "246167719483-jfdeget397m8i5kafd37ltr7qe5ti6tq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMhEILFHEZxvHu87PHIoIHH-WjvimP5n4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "246167719483-jfdeget397m8i5kafd37ltr7qe5ti6tq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "246167719483-3s3faf2fr6ja3b2m6bof9aolv255aeh1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.freemiumHub"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
