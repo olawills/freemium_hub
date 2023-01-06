@@ -21,7 +21,7 @@ class ContainerHeader extends StatelessWidget {
             _pageController.animateToPage(
               0,
               duration: const Duration(milliseconds: 300),
-              curve: Curves.ease,
+              curve: Curves.fastOutSlowIn,
             );
           },
           child: Container(
@@ -37,7 +37,7 @@ class ContainerHeader extends StatelessWidget {
                 ),
               ),
               child: Text(
-                'ALL',
+                'NEW',
                 style: TextStyle(
                   color: pageIndex == 0
                       ? Theme.of(context)
@@ -56,7 +56,7 @@ class ContainerHeader extends StatelessWidget {
             _pageController.animateToPage(
               1,
               duration: const Duration(milliseconds: 300),
-              curve: Curves.ease,
+              curve: Curves.fastOutSlowIn,
             );
           },
           child: Container(

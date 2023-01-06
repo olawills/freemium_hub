@@ -25,7 +25,7 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
       appBar: AppBar(
         title: Text(
           widget.category,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.headline4,
         ),
         leading: IconButton(
           onPressed: () {
@@ -55,10 +55,8 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
                     nextPage(
                       context: context,
                       screen: WallpaperView(
-                        image: categoryDocuments
-                            ?.elementAt(index)
-                            .get('image_url'),
-                            currentIndex: index,
+                        image: categoryDocuments!.toList(),
+                        currentIndex: index,
                       ),
                     );
                   },

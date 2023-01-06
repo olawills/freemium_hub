@@ -100,6 +100,7 @@ class _WallpaperHomeState extends State<WallpaperHome> {
   //   NewWallPaperScreen(),
   //   WallpaperCategories(),
   // ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
