@@ -1,8 +1,8 @@
-# freemium_hub
+# Freemium_hub
 
 ## Under Development
 
-# Screenshot of App
+## Screenshot of the app
 [](./screenshot/2.png) [](./screenshot/3.png)
 [](./screenshot/4.png) [](./screenshot/5.png)
 [](./screenshot/6.png) [](./screenshot/7.png)

@@ -19,7 +19,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    widget.showHome
+    widget.showHome == true
         ? Future.delayed(
             const Duration(seconds: 2),
             () {
