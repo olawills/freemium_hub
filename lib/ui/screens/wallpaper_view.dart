@@ -1,9 +1,8 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/styles/colors.dart';
-import 'package:photo_view/photo_view_gallery.dart';
+import 'package:freemium_hub/widgets/show_simple_dialog_widget.dart';
 
 class WallpaperView extends StatefulWidget {
   final List<QueryDocumentSnapshot<Object?>> image;
@@ -18,7 +17,8 @@ class WallpaperView extends StatefulWidget {
   State<WallpaperView> createState() => _WallpaperViewState();
 }
 
-class _WallpaperViewState extends State<WallpaperView> {
+class _WallpaperViewState extends State<WallpaperView>
+    with AutomaticKeepAliveClientMixin {
   // late String image;
   late PageController _pageController;
 
@@ -36,25 +36,18 @@ class _WallpaperViewState extends State<WallpaperView> {
   }
 
   @override
+  bool get wantKeepAlive => true;
   Widget build(BuildContext context) {
+    super.build(context);
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            Navigator.pop(context);
-          },
-        ),
-      ),
       body: Stack(
-        fit: StackFit.expand,
         children: [
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
+          Container(
+            width: width,
+            height: height,
             child: PageView.builder(
               itemCount: widget.image.length,
               onPageChanged: (index) {
@@ -64,10 +57,51 @@ class _WallpaperViewState extends State<WallpaperView> {
               itemBuilder: (BuildContext context, index) {
                 return ExtendedImage.network(
                   widget.image[index].get('image_url'),
-                  fit: BoxFit.cover,
+                  // fit: BoxFit.cover,
                   filterQuality: FilterQuality.high,
+                  fit: BoxFit.fitWidth,
+                  colorBlendMode: BlendMode.darken,
                 );
               },
+            ),
+          ),
+          Positioned(
+            top: 50,
+            left: 0,
+            child: Container(
+              height: 50,
+              width: MediaQuery.of(context).size.width,
+              color: Colors.black.withOpacity(0.4),
+              child: Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(left: 10),
+                    child: GestureDetector(
+                      child: const Icon(Icons.arrow_back),
+                      onTap: () {
+                        Navigator.pop(context);
+                      },
+                    ),
+                  ),
+                  Expanded(child: Container()),
+                  IconButton(
+                    icon: const Icon(Icons.info),
+                    onPressed: () {
+                      // code to share
+                    },
+                  ),
+                  const SizedBox(width: 10),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 10),
+                    child: GestureDetector(
+                      child: const Icon(Icons.share),
+                      onTap: () {
+                        // code to share
+                      },
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
           Positioned(
@@ -83,8 +117,8 @@ class _WallpaperViewState extends State<WallpaperView> {
                     Align(
                         alignment: Alignment.bottomLeft,
                         child: Container(
-                          height: 80,
-                          width: 100,
+                          height: 70,
+                          width: 70,
                           child: CircleAvatar(
                             // radius: 20,
                             backgroundColor: DarkThemeColors.darkThemeAppbar,
@@ -95,35 +129,38 @@ class _WallpaperViewState extends State<WallpaperView> {
                             ),
                           ),
                         )),
-                    const SizedBox(width: 3),
                     Align(
-                        alignment: Alignment.topCenter,
-                        child: Container(
-                          height: 120,
-                          width: 80,
-                          child: CircleAvatar(
-                            // radius: 20,
-                            backgroundColor: DarkThemeColors.darkThemeAppbar,
-                            child: const Icon(
-                              Icons.download,
-                              color: Colors.white,
-                              size: 30,
-                            ),
-                          ),
-                        )),
-                    const SizedBox(width: 3),
-                    Align(
-                      alignment: Alignment.bottomRight,
+                      alignment: Alignment.center,
                       child: Container(
-                        height: 80,
-                        width: 100,
+                        height: 70,
+                        width: 70,
                         child: CircleAvatar(
                           // radius: 20,
                           backgroundColor: DarkThemeColors.darkThemeAppbar,
                           child: const Icon(
-                            Icons.wallpaper,
+                            Icons.download,
                             color: Colors.white,
                             size: 30,
+                          ),
+                        ),
+                      ),
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Container(
+                        height: 70,
+                        width: 70,
+                        child: CircleAvatar(
+                          backgroundColor: DarkThemeColors.darkThemeAppbar,
+                          child: InkWell(
+                            onTap: () {
+                              setWallpaperDialogBox(context);
+                            },
+                            child: const Icon(
+                              Icons.wallpaper,
+                              color: Colors.white,
+                              size: 30,
+                            ),
                           ),
                         ),
                       ),

@@ -92,7 +92,7 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
                 // }
               },
               staggeredTileBuilder: (int index) {
-                return StaggeredTile.count(1, index.isEven ? 1.3 : 1.3);
+                return StaggeredTile.count(1, index.isEven ? 1.4 : 1.4);
               },
             );
           }

@@ -3,6 +3,7 @@ import 'package:freemium_hub/ui/intro_screens/intro_screen.dart';
 import 'package:freemium_hub/ui/screens/auth_page.dart';
 import 'package:freemium_hub/ui/screens/home_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
+import 'package:freemium_hub/widgets/auth_buttons.dart';
 
 class SplashScreen extends StatefulWidget {
   final bool showHome;
@@ -18,21 +19,19 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
-    Future.delayed(
-      const Duration(seconds: 2),
-      () {
-        widget.showHome
-            ? nextPageOnly(context: context, screen: const IntroScreen())
-            : nextPageOnly(
+    widget.showHome
+        ? Future.delayed(
+            const Duration(seconds: 2),
+            () {
+              nextPageOnly(
                 context: context,
-                screen: const AuthenticationPage(),
+                screen: const IntroScreen(),
               );
-      },
-    );
-
-    // Future.delayed(const Duration(seconds: 2), () {
-    //   nextPageOnly(context: context, screen: const HomePage());
-    // });
+            },
+          )
+        : Future.delayed(const Duration(seconds: 2), () {
+            nextPageOnly(context: context, screen: const AuthenticationPage());
+          });
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
