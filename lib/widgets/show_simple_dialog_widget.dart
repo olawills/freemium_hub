@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/styles/colors.dart';
 
-Future<void> setWallpaperDialogBox(BuildContext context) async {
+Future<void> setWallpaperDialogBox(
+  BuildContext context, {
+  required Function() setOnpressed,
+  required Function() shareOnpressed,
+}) async {
   return await showDialog(
     context: context,
     builder: (context) {
@@ -23,6 +27,7 @@ Future<void> setWallpaperDialogBox(BuildContext context) async {
           ),
           const SizedBox(height: 10),
           SimpleDialogOption(
+            onPressed: setOnpressed,
             child: InkWell(
               child: Row(
                 children: const [
@@ -32,14 +37,12 @@ Future<void> setWallpaperDialogBox(BuildContext context) async {
                 ],
               ),
             ),
-            onPressed: () {
-              // code to crop and set wallpaper
-            },
           ),
           const Divider(
             thickness: 1.5,
           ),
           SimpleDialogOption(
+            onPressed: shareOnpressed,
             child: InkWell(
               child: Row(
                 children: const [
@@ -49,9 +52,6 @@ Future<void> setWallpaperDialogBox(BuildContext context) async {
                 ],
               ),
             ),
-            onPressed: () {
-              // code to apply wallpaper with other app
-            },
           ),
         ],
       );
