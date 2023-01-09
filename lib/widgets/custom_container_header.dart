@@ -24,7 +24,7 @@ class ContainerHeader extends StatelessWidget {
               curve: Curves.fastOutSlowIn,
             );
           },
-          child: Container(
+          child: SizedBox(
             height: 50,
             width: 150,
             child: Container(

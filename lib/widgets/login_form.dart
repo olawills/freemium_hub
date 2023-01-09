@@ -12,7 +12,7 @@ class _LoginFormState extends State<LoginForm> {
   Widget build(BuildContext context) {
     return Form(
       child: Column(
-        children: [],
+        children: const [],
       ),
     );
   }

@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class FavoritePage extends StatelessWidget {
@@ -13,7 +12,7 @@ class FavoritePage extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [],
+          children: const [],
         ),
       ),
     );

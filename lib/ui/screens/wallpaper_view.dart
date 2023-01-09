@@ -3,8 +3,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/styles/colors.dart';
 import 'package:freemium_hub/widgets/show_modal_sheet.dart';
-import 'package:freemium_hub/widgets/show_modal_sheet_divider.dart';
-import 'package:freemium_hub/widgets/show_simple_dialog_widget.dart';
+import 'package:freemium_hub/widgets/wallpaper_dialog.dart';
 
 class WallpaperView extends StatefulWidget {
   final List<QueryDocumentSnapshot<Object?>> image;
@@ -21,12 +20,13 @@ class WallpaperView extends StatefulWidget {
 
 class _WallpaperViewState extends State<WallpaperView>
     with AutomaticKeepAliveClientMixin {
-  // late String image;
+   late int currentIndex;
   late PageController _pageController;
 
   @override
   void initState() {
-    // image = widget.image[widget.currentIndex];
+    
+    currentIndex = widget.currentIndex;
     _pageController = PageController(initialPage: widget.currentIndex);
     super.initState();
   }
@@ -39,6 +39,7 @@ class _WallpaperViewState extends State<WallpaperView>
 
   @override
   bool get wantKeepAlive => true;
+  @override
   Widget build(BuildContext context) {
     super.build(context);
     double width = MediaQuery.of(context).size.width;
@@ -47,13 +48,15 @@ class _WallpaperViewState extends State<WallpaperView>
       extendBodyBehindAppBar: true,
       body: Stack(
         children: [
-          Container(
+          SizedBox(
             width: width,
             height: height,
             child: PageView.builder(
               itemCount: widget.image.length,
               onPageChanged: (index) {
-                setState(() {});
+                setState(() {
+                  currentIndex = index;
+                });
               },
               controller: _pageController,
               itemBuilder: (BuildContext context, index) {
@@ -118,7 +121,7 @@ class _WallpaperViewState extends State<WallpaperView>
                   children: [
                     Align(
                         alignment: Alignment.bottomLeft,
-                        child: Container(
+                        child: SizedBox(
                           height: 90,
                           width: 80,
                           child: InkResponse(
@@ -136,7 +139,7 @@ class _WallpaperViewState extends State<WallpaperView>
                         )),
                     Align(
                       alignment: Alignment.center,
-                      child: Container(
+                      child: SizedBox(
                         height: 90,
                         width: 80,
                         child: InkResponse(
@@ -155,7 +158,7 @@ class _WallpaperViewState extends State<WallpaperView>
                     ),
                     Align(
                       alignment: Alignment.bottomRight,
-                      child: Container(
+                      child: SizedBox(
                         height: 90,
                         width: 80,
                         child: InkResponse(
@@ -166,7 +169,7 @@ class _WallpaperViewState extends State<WallpaperView>
                                 Navigator.pop(context);
                                 showActionSheet(
                                   context: context,
-                                  url: widget.image[widget.currentIndex]
+                                   url: widget.image[currentIndex]
                                       .get('image_url'),
                                 );
                               },

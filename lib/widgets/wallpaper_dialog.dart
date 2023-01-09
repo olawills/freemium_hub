@@ -28,7 +28,7 @@ Future<void> setWallpaperDialogBox(
           const SizedBox(height: 10),
           SimpleDialogOption(
             onPressed: setOnpressed,
-            child: InkWell(
+            child: InkResponse(
               child: Row(
                 children: const [
                   Icon(Icons.crop),
@@ -43,7 +43,7 @@ Future<void> setWallpaperDialogBox(
           ),
           SimpleDialogOption(
             onPressed: shareOnpressed,
-            child: InkWell(
+            child: InkResponse(
               child: Row(
                 children: const [
                   Icon(Icons.phone_android),
