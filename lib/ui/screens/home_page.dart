@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
           return screens[index];
         },
       ),
-      bottomNavigationBar: Container(
+      bottomNavigationBar: SizedBox(
           height: 70,
           child: BottomNavigationBar(
             iconSize: 30,

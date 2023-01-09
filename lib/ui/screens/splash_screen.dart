@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/intro_screens/intro_screen.dart';
 import 'package:freemium_hub/ui/screens/auth_page.dart';
-import 'package:freemium_hub/ui/screens/home_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
-import 'package:freemium_hub/widgets/auth_buttons.dart';
 
 class SplashScreen extends StatefulWidget {
   final bool showHome;
@@ -35,7 +33,7 @@ class _SplashScreenState extends State<SplashScreen> {
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(
-        child: Container(
+        child: SizedBox(
           height: size.height * 0.5,
           width: size.width * 0.5,
           child: const FlutterLogo(),

@@ -41,7 +41,7 @@ class DarkThemeData {
     backgroundColor: DarkThemeColors.bottomNavBarColor,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        primary: DarkThemeColors.selectedIconColor,
+        backgroundColor: DarkThemeColors.selectedIconColor,
       ),
     ),
     bottomNavigationBarTheme: BottomNavigationBarThemeData(

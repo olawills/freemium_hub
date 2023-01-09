@@ -8,20 +8,19 @@ import 'package:image_cropper/image_cropper.dart';
 
 import 'show_modal_sheet_divider.dart';
 
-enum SetWallpaperAs { HomeScreen, LockScreen, BothScreen }
+enum SetWallpaperAs { homeScreen, lockScreen, bothScreen }
 
 Map _setAs = {
-  SetWallpaperAs.HomeScreen: WallpaperManager.HOME_SCREEN,
-  SetWallpaperAs.LockScreen: WallpaperManager.LOCK_SCREEN,
-  SetWallpaperAs.BothScreen: WallpaperManager.BOTH_SCREEN,
+  SetWallpaperAs.homeScreen: WallpaperManager.HOME_SCREEN,
+  SetWallpaperAs.lockScreen: WallpaperManager.LOCK_SCREEN,
+  SetWallpaperAs.bothScreen: WallpaperManager.BOTH_SCREEN,
 };
 
 Future<void> showActionSheet(
     {required BuildContext context, required String url}) async {
-  final Color = Theme.of(context).scaffoldBackgroundColor;
   final height = MediaQuery.of(context).size.height * 1;
   final width = MediaQuery.of(context).size.width * 0.9;
-  var showActionSheet = Container(
+  var showActionSheet = SizedBox(
     height: 180,
     child: Column(
       children: <Widget>[
@@ -32,7 +31,7 @@ Future<void> showActionSheet(
             style: Theme.of(context).textTheme.headline6,
           ),
           onTap: () {
-            Navigator.of(context).pop(SetWallpaperAs.HomeScreen);
+            Navigator.of(context).pop(SetWallpaperAs.homeScreen);
           },
         ),
         const ShowModalBottomSheetDivider(),
@@ -43,7 +42,7 @@ Future<void> showActionSheet(
             style: Theme.of(context).textTheme.headline6,
           ),
           onTap: () {
-            Navigator.of(context).pop(SetWallpaperAs.LockScreen);
+            Navigator.of(context).pop(SetWallpaperAs.lockScreen);
           },
         ),
         const ShowModalBottomSheetDivider(),
@@ -54,7 +53,7 @@ Future<void> showActionSheet(
             style: Theme.of(context).textTheme.headline6,
           ),
           onTap: () {
-            Navigator.of(context).pop(SetWallpaperAs.BothScreen);
+            Navigator.of(context).pop(SetWallpaperAs.bothScreen);
           },
         ),
       ],
@@ -68,34 +67,28 @@ Future<void> showActionSheet(
     },
   );
 
-  if (option != null) {
-    var cachedImage = await DefaultCacheManager().getSingleFile(url);
+  var cachedImage = await DefaultCacheManager().getSingleFile(url);
 
-    if (cachedImage != null) {
-      var croppedImage = await ImageCropper().cropImage(
-          sourcePath: cachedImage.path,
-          aspectRatio: CropAspectRatio(
-            ratioX: width,
-            ratioY: height,
-          ),
-          uiSettings: [
-            AndroidUiSettings(
-              toolbarTitle: 'Crop Image',
-              toolbarWidgetColor: DarkThemeColors.unSelectedIconColor,
-              toolbarColor: DarkThemeColors.darkThemeAppbar,
-              hideBottomControls: true,
-            ),
-          ]);
+  var croppedImage = await ImageCropper().cropImage(
+      sourcePath: cachedImage.path,
+      aspectRatio: CropAspectRatio(
+        ratioX: width,
+        ratioY: height,
+      ),
+      uiSettings: [
+        AndroidUiSettings(
+          toolbarTitle: 'Crop Image',
+          toolbarWidgetColor: DarkThemeColors.unSelectedIconColor,
+          toolbarColor: DarkThemeColors.darkThemeAppbar,
+          hideBottomControls: true,
+        ),
+      ]);
 
-      if (croppedImage != null) {
-        var result = WallpaperManager.setWallpaperFromFile(
-          croppedImage.path,
-          _setAs[option],
-        );
-        if (result != null) {
-          log(result.toString());
-        }
-      }
-    }
+  if (croppedImage != null) {
+    var result = WallpaperManager.setWallpaperFromFile(
+      croppedImage.path,
+      _setAs[option],
+    );
+    log(result.toString());
   }
 }

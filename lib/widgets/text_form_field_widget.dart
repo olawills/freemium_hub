@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freemium_hub/widgets/widget_extensions.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
   final String labelText;
