@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
@@ -25,7 +24,7 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
       appBar: AppBar(
         title: Text(
           widget.category,
-          style: Theme.of(context).textTheme.headline6,
+          style: Theme.of(context).textTheme.headline4,
         ),
         leading: IconButton(
           onPressed: () {
@@ -39,7 +38,8 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
       body: StreamBuilder(
         stream: FirebaseFirestore.instance.collection('wallpapers').snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
-          if (snapshot.hasData) {
+          if (snapshot.hasData &&
+              snapshot.connectionState == ConnectionState.active) {
             var categoryDocuments = snapshot.data?.docs
                 .where((document) => (document.get('tag') == widget.category));
             return StaggeredGridView.countBuilder(
@@ -50,15 +50,15 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
               itemBuilder: (BuildContext context, int index) {
                 // if (snapshot.hasData) {
                 return InkResponse(
-                  onTap: () =>
+                  onTap: () {
                     nextPage(
-                        context: context,
-                        screen: WallpaperView(
-                          image: categoryDocuments
-                              ?.elementAt(index)
-                              .get('image_url'),
-                        ))
-                  ,
+                      context: context,
+                      screen: WallpaperView(
+                        image: categoryDocuments!.toList(),
+                        currentIndex: index,
+                      ),
+                    );
+                  },
                   child: Container(
                     margin: const EdgeInsets.all(2),
                     decoration: BoxDecoration(
@@ -74,6 +74,8 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
                       image: DecorationImage(
                         image: ExtendedNetworkImageProvider(
                           categoryDocuments?.elementAt(index).get('image_url'),
+                          cache: true,
+                          printError: true,
                         ),
                         fit: BoxFit.cover,
                       ),
@@ -89,10 +91,20 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
                 // }
               },
               staggeredTileBuilder: (int index) {
-                return StaggeredTile.count(1, index.isEven ? 1.3 : 1.3);
+                return StaggeredTile.count(1, index.isEven ? 1.4 : 1.4);
               },
             );
-          } else {
+          }
+          //  else if (snapshot.connectionState ==
+          //       ConnectionState.none) {
+          //     return const Center(
+          //       child: Text(
+          //         'Check your network and try again later...',
+          //       ),
+          //     );
+          //   }
+
+          else {
             return Center(
               child: CircularProgressIndicator(
                 color: DarkThemeColors.selectedIconColor,

@@ -1,4 +1,3 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
@@ -26,14 +25,14 @@ class _WallpaperCategoriesState extends State<WallpaperCategories> {
   void initState() {
     super.initState();
 
-    widget.snapshot.data!.docs.forEach((document) {
+    for (var document in widget.snapshot.data!.docs) {
       var category = document.get('tag');
 
       if (!categories.contains(category)) {
         categories.add(category);
         categoryImages.add(document.get('image_url'));
       }
-    });
+    }
   }
 
   @override
@@ -71,6 +70,8 @@ class _WallpaperCategoriesState extends State<WallpaperCategories> {
                   image: DecorationImage(
                     image: ExtendedNetworkImageProvider(
                       categoryImages.elementAt(index),
+                      cache: true,
+                      printError: true,
                     ),
                     fit: BoxFit.cover,
                   ),
@@ -82,7 +83,15 @@ class _WallpaperCategoriesState extends State<WallpaperCategories> {
                 ),
               ),
             );
-          } else {
+          }
+          // else if (widget.snapshot.connectionState == ConnectionState.none) {
+          //   return const Center(
+          //     child: Text(
+          //       'Check your network and try again later...',
+          //     ),
+          //   );
+          // }
+          else {
             return Center(
               child: CircularProgressIndicator(
                 color: DarkThemeColors.selectedIconColor,

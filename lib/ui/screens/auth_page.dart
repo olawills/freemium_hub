@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/screens/home_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
@@ -24,7 +23,7 @@ class _AuthenticationPageState extends State<AuthenticationPage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: size.height * 0.4,
               width: size.width * 0.4,
               child: const FlutterLogo(),

@@ -1,14 +1,9 @@
-import 'dart:developer';
-import 'dart:io';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/nav_pages/categories_wallpaper_screen.dart';
-import 'package:freemium_hub/ui/screens/favorite_page.dart';
 import 'package:freemium_hub/ui/nav_pages/new_wallpapers_sreen.dart';
 import 'package:freemium_hub/widgets/custom_container_header.dart';
-import 'package:uuid/uuid.dart';
 
 class WallpaperHome extends StatefulWidget {
   const WallpaperHome({Key? key}) : super(key: key);
@@ -150,16 +145,13 @@ class _WallpaperHomeState extends State<WallpaperHome> {
     switch (index) {
       case 0:
         return NewWallPaperScreen(snapshot: snapshot);
-        break;
       case 1:
         return WallpaperCategories(snapshot: snapshot);
-        break;
       // case 2:
       //   return FavoritePage(snapshot: snapshot);
       //   break;
       default:
         return const CircularProgressIndicator();
-        break;
     }
   }
 }

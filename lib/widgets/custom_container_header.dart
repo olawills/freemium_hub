@@ -21,10 +21,10 @@ class ContainerHeader extends StatelessWidget {
             _pageController.animateToPage(
               0,
               duration: const Duration(milliseconds: 300),
-              curve: Curves.ease,
+              curve: Curves.fastOutSlowIn,
             );
           },
-          child: Container(
+          child: SizedBox(
             height: 50,
             width: 150,
             child: Container(
@@ -56,7 +56,7 @@ class ContainerHeader extends StatelessWidget {
             _pageController.animateToPage(
               1,
               duration: const Duration(milliseconds: 300),
-              curve: Curves.ease,
+              curve: Curves.fastOutSlowIn,
             );
           },
           child: Container(

@@ -15,7 +15,7 @@ class IntroPageWidget extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.only(bottom: 50),
-            child: Container(
+            child: SizedBox(
               height: size.height * 0.2,
               width: size.width * 0.4,
               child: const FlutterLogo(),

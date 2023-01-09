@@ -17,7 +17,7 @@ class SignUpButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: onPressed,
       style: ElevatedButton.styleFrom(
-        primary: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        backgroundColor: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
         fixedSize: const Size(300, 60),
         side: BorderSide(
           width: 2,
