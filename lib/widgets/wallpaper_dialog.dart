@@ -28,14 +28,12 @@ Future<void> setWallpaperDialogBox(
           const SizedBox(height: 10),
           SimpleDialogOption(
             onPressed: setOnpressed,
-            child: InkResponse(
-              child: Row(
-                children: const [
-                  Icon(Icons.crop),
-                  SizedBox(width: 10),
-                  Text('Crop and Set'),
-                ],
-              ),
+            child: Row(
+              children: const [
+                Icon(Icons.crop),
+                SizedBox(width: 10),
+                Text('Crop and Set'),
+              ],
             ),
           ),
           const Divider(
@@ -43,14 +41,12 @@ Future<void> setWallpaperDialogBox(
           ),
           SimpleDialogOption(
             onPressed: shareOnpressed,
-            child: InkResponse(
-              child: Row(
-                children: const [
-                  Icon(Icons.phone_android),
-                  SizedBox(width: 10),
-                  Text('Apply with other app'),
-                ],
-              ),
+            child: Row(
+              children: const [
+                Icon(Icons.phone_android),
+                SizedBox(width: 10),
+                Text('Apply with other app'),
+              ],
             ),
           ),
         ],

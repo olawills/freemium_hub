@@ -15,13 +15,13 @@ class _HomePageState extends State<HomePage> {
   final List<Map> _pages = [
     {'icon': Icons.bookmark, 'title': 'Home'},
     {'icon': Icons.favorite, 'title': 'Favorites'},
-    {'icon': Icons.download, 'title': 'Downloads'},
+    // {'icon': Icons.download, 'title': 'Downloads'},
     {'icon': Icons.settings, 'title': 'Settings'},
   ];
   final List<Widget> screens = const [
     WallpaperHome(),
     FavoritePage(),
-    WallpaperDownloadsPage(),
+    // WallpaperDownloadsPage(),
     SettingsPage(),
   ];
   int currentIndex = 0;
@@ -33,7 +33,8 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       body: PageView.builder(
         controller: _pageController,
-        physics: const BouncingScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
+        // physics: const BouncingScrollPhysics(),
         onPageChanged: (int index) {
           setState(() {
             currentIndex = index;
@@ -44,35 +45,39 @@ class _HomePageState extends State<HomePage> {
           return screens[index];
         },
       ),
-      bottomNavigationBar: SizedBox(
-          height: 70,
-          child: BottomNavigationBar(
-            iconSize: 30,
-            onTap: (index) {
-              setState(() {
-                currentIndex = index;
-                _pageController.animateToPage(
-                  currentIndex,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.fastOutSlowIn,
-                );
-              });
-            },
-            currentIndex: currentIndex,
-            type: BottomNavigationBarType.fixed,
-            items: List.generate(
-              _pages.length,
-              (index) {
-                final data = _pages[index];
-                return BottomNavigationBarItem(
-                  icon: Icon(
-                    data['icon'],
-                  ),
-                  label: data['title'],
-                );
-              },
-            ),
-          )),
+      bottomNavigationBar: bottomNavigationBar(),
     );
+  }
+
+  Widget bottomNavigationBar() {
+    return SizedBox(
+        height: 80,
+        child: BottomNavigationBar(
+          iconSize: 30,
+          onTap: (index) {
+            setState(() {
+              currentIndex = index;
+              _pageController.animateToPage(
+                currentIndex,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.fastOutSlowIn,
+              );
+            });
+          },
+          currentIndex: currentIndex,
+          type: BottomNavigationBarType.fixed,
+          items: List.generate(
+            _pages.length,
+            (index) {
+              final data = _pages[index];
+              return BottomNavigationBarItem(
+                icon: Icon(
+                  data['icon'],
+                ),
+                label: data['title'],
+              );
+            },
+          ),
+        ));
   }
 }

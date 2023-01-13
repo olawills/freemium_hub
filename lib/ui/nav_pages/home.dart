@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:freemium_hub/models/wallpaper_models.dart';
 import 'package:freemium_hub/ui/nav_pages/categories_wallpaper_screen.dart';
 import 'package:freemium_hub/ui/nav_pages/new_wallpapers_sreen.dart';
+import 'package:freemium_hub/ui/screens/favorite_page.dart';
 import 'package:freemium_hub/widgets/custom_container_header.dart';
 
 class WallpaperHome extends StatefulWidget {
@@ -90,10 +92,6 @@ class _WallpaperHomeState extends State<WallpaperHome> {
   //   createWallpaperCollection(foldername);
   // }
 
-  // final List<Widget> _screens = const [
-  //   NewWallPaperScreen(),
-  //   WallpaperCategories(),
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -113,26 +111,29 @@ class _WallpaperHomeState extends State<WallpaperHome> {
                     builder: (BuildContext context,
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
+                        final List<WallpaperModels> wallpaperModels = [];
+                        snapshot.data!.docs.forEach((documentSnapshot) {
+                          wallpaperModels.add(
+                              WallpaperModels.fromDocumentSnapshot(
+                                  documentSnapshot));
+                        });
                         return PageView.builder(
                           controller: _pageController,
-                          physics: const NeverScrollableScrollPhysics(),
+                          physics: const AlwaysScrollableScrollPhysics(),
                           onPageChanged: (int index) {
                             setState(() {
                               pageIndex = index;
                             });
                           },
-                          itemCount: 2,
+                          itemCount: 1,
                           itemBuilder: (BuildContext context, int index) {
-                            return screenIndex(index, snapshot);
+                            return screenIndex(index, wallpaperModels);
                           },
                         );
                       } else {
                         return const Center(child: CircularProgressIndicator());
                       }
                     }),
-                // } else {
-                //   return Center(child: const CircularProgressIndicator());
-                // }
               ),
             ],
           ),
@@ -141,16 +142,16 @@ class _WallpaperHomeState extends State<WallpaperHome> {
     );
   }
 
-  Widget screenIndex(int index, AsyncSnapshot<QuerySnapshot> snapshot) {
+  Widget screenIndex(int index, List<WallpaperModels> wallpaperModels) {
     switch (index) {
       case 0:
-        return NewWallPaperScreen(snapshot: snapshot);
-      // break;
+        return NewWallPaperScreen(wallpaperModels: wallpaperModels);
+        break;
       case 1:
-        return WallpaperCategories(snapshot: snapshot);
-      // break;
+        return WallpaperCategories(wallpaperModels: wallpaperModels);
+        break;
       // case 2:
-      //   return FavoritePage(snapshot: snapshot);
+      //   return FavoritePage(wallpaperModels: wallpaperModels);
       //   break;
       default:
         return const CircularProgressIndicator();

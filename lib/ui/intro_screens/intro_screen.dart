@@ -1,12 +1,16 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_1.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_2.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_3.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_4.dart';
 import 'package:freemium_hub/ui/screens/auth_page.dart';
+import 'package:freemium_hub/ui/screens/home_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
 import 'package:freemium_hub/widgets/app_buttons.dart';
 import 'package:freemium_hub/widgets/widget_extensions.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class IntroScreen extends StatefulWidget {
@@ -49,7 +53,9 @@ class _IntroScreenState extends State<IntroScreen> {
             child: onLastPage
                 ? SizedBox(width: 30..spacingW)
                 : InkWell(
-                    onTap: () {
+                    onTap: () async {
+                      final prefs = await SharedPreferences.getInstance();
+                      prefs.setBool('showHome', true);
                       _pageController.jumpToPage(_pages.length);
                     },
                     child: Text(
@@ -74,9 +80,11 @@ class _IntroScreenState extends State<IntroScreen> {
                 onLastPage
                     ? FreemiumButtons(
                         onPressed: () async {
+                          final prefs = await SharedPreferences.getInstance();
+                          prefs.setBool('showHome', true);
                           nextPageOnly(
                             context: context,
-                            screen: const AuthenticationPage(),
+                            screen: const HomePage(),
                           );
                         },
                         size: const Size(80, 50),
@@ -85,7 +93,9 @@ class _IntroScreenState extends State<IntroScreen> {
                         ),
                       )
                     : FreemiumButtons(
-                        onPressed: () {
+                        onPressed: () async {
+                          // final prefs = await SharedPreferences.getInstance();
+                          // prefs.setBool('showHome', true);
                           _pageController.nextPage(
                             duration: const Duration(microseconds: 300),
                             curve: Curves.easeIn,

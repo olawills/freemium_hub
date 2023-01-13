@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:freemium_hub/models/wallpaper_models.dart';
 import 'package:freemium_hub/styles/colors.dart';
 import 'package:freemium_hub/ui/screens/wallpaper_view.dart';
 import 'package:freemium_hub/utils/routers.dart';
@@ -40,6 +41,8 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData &&
               snapshot.connectionState == ConnectionState.active) {
+            final List<WallpaperModels> wallpaperModels = [];
+
             var categoryDocuments = snapshot.data?.docs
                 .where((document) => (document.get('tag') == widget.category));
             return StaggeredGridView.countBuilder(
@@ -53,8 +56,8 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
                   onTap: () {
                     nextPage(
                       context: context,
-                      screen: WallpaperView(
-                        image: categoryDocuments!.toList(),
+                      screen: CategoryWallpaperView(
+                        image: categoryDocuments.toList(),
                         currentIndex: index,
                       ),
                     );
@@ -88,7 +91,7 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
                 //       color: DarkThemeColors.selectedIconColor,
                 //     ),
                 //   );
-                // }
+                // },
               },
               staggeredTileBuilder: (int index) {
                 return StaggeredTile.count(1, index.isEven ? 1.4 : 1.4);
