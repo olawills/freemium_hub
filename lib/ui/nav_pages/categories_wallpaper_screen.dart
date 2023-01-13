@@ -1,16 +1,16 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:freemium_hub/models/wallpaper_models.dart';
 import 'package:freemium_hub/styles/colors.dart';
 import 'package:freemium_hub/ui/nav_pages/category_wallpaper.dart';
 import 'package:freemium_hub/utils/routers.dart';
 
 class WallpaperCategories extends StatefulWidget {
-  final AsyncSnapshot<QuerySnapshot> snapshot;
+  final List<WallpaperModels> wallpaperModels;
   const WallpaperCategories({
     Key? key,
-    required this.snapshot,
+    required this.wallpaperModels,
   }) : super(key: key);
 
   @override
@@ -25,12 +25,12 @@ class _WallpaperCategoriesState extends State<WallpaperCategories> {
   void initState() {
     super.initState();
 
-    for (var document in widget.snapshot.data!.docs) {
-      var category = document.get('tag');
+    for (var wallpapers in widget.wallpaperModels) {
+      var category = wallpapers.category;
 
       if (!categories.contains(category)) {
         categories.add(category);
-        categoryImages.add(document.get('image_url'));
+        categoryImages.add(wallpapers.url);
       }
     }
   }
@@ -45,7 +45,7 @@ class _WallpaperCategoriesState extends State<WallpaperCategories> {
         crossAxisSpacing: 4,
         itemCount: categories.length,
         itemBuilder: (BuildContext context, int index) {
-          if (widget.snapshot.hasData) {
+          if (widget.wallpaperModels.isNotEmpty) {
             return InkResponse(
               onTap: () {
                 nextPage(
@@ -58,14 +58,6 @@ class _WallpaperCategoriesState extends State<WallpaperCategories> {
               child: Container(
                 margin: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
-                  gradient: const LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.topRight,
-                    colors: [
-                      Color(0xff000000),
-                      Color(0xff000000),
-                    ],
-                  ),
                   borderRadius: BorderRadius.circular(5),
                   image: DecorationImage(
                     image: ExtendedNetworkImageProvider(

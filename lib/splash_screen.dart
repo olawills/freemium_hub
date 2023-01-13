@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/intro_screens/intro_screen.dart';
-import 'package:freemium_hub/ui/screens/auth_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
+
+import 'ui/screens/home_page.dart';
 
 class SplashScreen extends StatefulWidget {
   final bool showHome;
@@ -23,13 +24,14 @@ class _SplashScreenState extends State<SplashScreen> {
             () {
               nextPageOnly(
                 context: context,
-                screen: const IntroScreen(),
+                screen: const HomePage(),
               );
             },
           )
         : Future.delayed(const Duration(seconds: 2), () {
-            nextPageOnly(context: context, screen: const AuthenticationPage());
+            nextPageOnly(context: context, screen: const IntroScreen());
           });
+
     final size = MediaQuery.of(context).size;
     return Scaffold(
       body: Center(

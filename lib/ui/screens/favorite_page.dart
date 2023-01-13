@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 class FavoritePage extends StatelessWidget {
-  // final AsyncSnapshot<QuerySnapshot> snapshot;
+  // final List<WallpaperModels> wallpaperModels;
   const FavoritePage({
     Key? key,
-    // required this.snapshot,
+    // required this.wallpaperModels,
   }) : super(key: key);
 
   @override

@@ -18,8 +18,9 @@ Map _setAs = {
 
 Future<void> showActionSheet(
     {required BuildContext context, required String url}) async {
+  // final Color = Theme.of(context).scaffoldBackgroundColor;
   final height = MediaQuery.of(context).size.height * 1;
-  final width = MediaQuery.of(context).size.width * 0.9;
+  final width = MediaQuery.of(context).size.width * 0.98;
   var showActionSheet = SizedBox(
     height: 180,
     child: Column(
@@ -42,6 +43,7 @@ Future<void> showActionSheet(
             style: Theme.of(context).textTheme.headline6,
           ),
           onTap: () {
+            // Navigator.of(context).pop();
             Navigator.of(context).pop(SetWallpaperAs.lockScreen);
           },
         ),
@@ -89,6 +91,8 @@ Future<void> showActionSheet(
       croppedImage.path,
       _setAs[option],
     );
-    log(result.toString());
+    debugPrint(result.toString());
+  } else {
+    log(croppedImage.toString());
   }
 }
