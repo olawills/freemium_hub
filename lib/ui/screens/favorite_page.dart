@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:freemium_hub/models/wallpaper_models.dart';
 
 class FavoritePage extends StatelessWidget {
   // final List<WallpaperModels> wallpaperModels;

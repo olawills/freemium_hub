@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -129,7 +131,7 @@ class _CategoryWallpaperViewState extends State<CategoryWallpaperView>
 
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 } on PlatformException catch (error) {
-                  print(error);
+                  debugPrint(error.toString());
                 }
               } else {
                 showDialog(

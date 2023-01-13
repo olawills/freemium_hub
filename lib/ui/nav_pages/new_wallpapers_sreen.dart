@@ -1,6 +1,5 @@
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:freemium_hub/models/wallpaper_models.dart';
 import 'package:freemium_hub/ui/screens/new_wallpaper_view.dart';

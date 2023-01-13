@@ -1,11 +1,9 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_1.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_2.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_3.dart';
 import 'package:freemium_hub/ui/intro_screens/screen_4.dart';
-import 'package:freemium_hub/ui/screens/auth_page.dart';
 import 'package:freemium_hub/ui/screens/home_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
 import 'package:freemium_hub/widgets/app_buttons.dart';

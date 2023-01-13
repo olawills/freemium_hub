@@ -41,7 +41,6 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (snapshot.hasData &&
               snapshot.connectionState == ConnectionState.active) {
-            final List<WallpaperModels> wallpaperModels = [];
 
             var categoryDocuments = snapshot.data?.docs
                 .where((document) => (document.get('tag') == widget.category));
@@ -57,7 +56,9 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
                     nextPage(
                       context: context,
                       screen: CategoryWallpaperView(
-                        image: categoryDocuments.toList(),
+                        image: categoryDocuments!
+                            .map((e) => WallpaperModels.fromDocumentSnapshot(e))
+                            .toList(),
                         currentIndex: index,
                       ),
                     );

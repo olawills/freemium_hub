@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:freemium_hub/models/wallpaper_models.dart';
 import 'package:freemium_hub/ui/nav_pages/categories_wallpaper_screen.dart';
 import 'package:freemium_hub/ui/nav_pages/new_wallpapers_sreen.dart';
-import 'package:freemium_hub/ui/screens/favorite_page.dart';
 import 'package:freemium_hub/widgets/custom_container_header.dart';
 
 class WallpaperHome extends StatefulWidget {
@@ -92,7 +91,6 @@ class _WallpaperHomeState extends State<WallpaperHome> {
   //   createWallpaperCollection(foldername);
   // }
 
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -112,11 +110,11 @@ class _WallpaperHomeState extends State<WallpaperHome> {
                         AsyncSnapshot<QuerySnapshot> snapshot) {
                       if (snapshot.hasData && snapshot.data!.docs.isNotEmpty) {
                         final List<WallpaperModels> wallpaperModels = [];
-                        snapshot.data!.docs.forEach((documentSnapshot) {
+                        for (var documentSnapshot in snapshot.data!.docs) {
                           wallpaperModels.add(
                               WallpaperModels.fromDocumentSnapshot(
                                   documentSnapshot));
-                        });
+                        }
                         return PageView.builder(
                           controller: _pageController,
                           physics: const AlwaysScrollableScrollPhysics(),
@@ -146,16 +144,10 @@ class _WallpaperHomeState extends State<WallpaperHome> {
     switch (index) {
       case 0:
         return NewWallPaperScreen(wallpaperModels: wallpaperModels);
-        break;
       case 1:
         return WallpaperCategories(wallpaperModels: wallpaperModels);
-        break;
-      // case 2:
-      //   return FavoritePage(wallpaperModels: wallpaperModels);
-      //   break;
       default:
         return const CircularProgressIndicator();
-      // break;
     }
   }
 }

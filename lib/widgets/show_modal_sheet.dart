@@ -1,5 +1,4 @@
 import 'dart:developer';
-import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
@@ -92,6 +91,7 @@ Future<void> showActionSheet(
       croppedImage.path,
       _setAs[option],
     );
+    debugPrint(result.toString());
   } else {
     log(croppedImage.toString());
   }

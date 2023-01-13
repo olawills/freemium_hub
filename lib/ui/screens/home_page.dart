@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/screens/favorite_page.dart';
-import 'package:freemium_hub/ui/screens/downloads_page.dart';
 import 'package:freemium_hub/ui/nav_pages/home.dart';
 import 'package:freemium_hub/ui/screens/settings_page.dart';
 

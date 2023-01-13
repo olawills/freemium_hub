@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/ui/intro_screens/intro_screen.dart';
-import 'package:freemium_hub/ui/screens/auth_page.dart';
-import 'package:freemium_hub/ui/screens/home_page.dart';
 import 'package:freemium_hub/utils/routers.dart';
+
+import 'ui/screens/home_page.dart';
 
 class SplashScreen extends StatefulWidget {
   final bool showHome;
