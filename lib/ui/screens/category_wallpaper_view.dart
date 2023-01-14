@@ -4,6 +4,7 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:freemium_hub/models/wallpaper_models.dart';
+import 'package:freemium_hub/utils/permission_dialog.dart';
 
 import 'package:freemium_hub/widgets/bottom_widget.dart';
 import 'package:freemium_hub/widgets/show_modal_sheet.dart';
@@ -118,7 +119,11 @@ class _CategoryWallpaperViewState extends State<CategoryWallpaperView>
                     destination: AndroidDestinationType.directoryPictures,
                   );
                   final snackBar = SnackBar(
-                    content: const Text('Download Completed..'),
+                    content: Text(
+                      'Download Completed..',
+                      style: Theme.of(context).textTheme.headline6,
+                    ),
+                    backgroundColor: Theme.of(context).backgroundColor,
                     action: SnackBarAction(
                       label: 'Open',
                       onPressed: () async {
@@ -134,27 +139,12 @@ class _CategoryWallpaperViewState extends State<CategoryWallpaperView>
                   debugPrint(error.toString());
                 }
               } else {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: const Text('Need Access to Storgae'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              openAppSettings();
-                            },
-                            child: const Text('Open Settings'),
-                          ),
-                          TextButton(
-                            onPressed: () {
-                              Navigator.of(context).pop();
-                            },
-                            child: const Text('Cancel'),
-                          ),
-                        ],
-                      );
-                    });
+                alertDialog(
+                  context: context,
+                  onPressed: () {
+                    openAppSettings();
+                  },
+                );
               }
             },
             onPressed: () async {

@@ -117,13 +117,13 @@ class _WallpaperHomeState extends State<WallpaperHome> {
                         }
                         return PageView.builder(
                           controller: _pageController,
-                          physics: const AlwaysScrollableScrollPhysics(),
+                          // physics: const AlwaysScrollableScrollPhysics(),
                           onPageChanged: (int index) {
                             setState(() {
                               pageIndex = index;
                             });
                           },
-                          itemCount: 1,
+                          itemCount: 2,
                           itemBuilder: (BuildContext context, int index) {
                             return screenIndex(index, wallpaperModels);
                           },

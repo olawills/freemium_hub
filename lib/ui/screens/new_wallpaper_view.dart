@@ -1,9 +1,9 @@
 // ignore_for_file: use_build_context_synchronously
-
 import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:freemium_hub/models/wallpaper_models.dart';
+import 'package:freemium_hub/utils/permission_dialog.dart';
 import 'package:freemium_hub/widgets/bottom_widget.dart';
 import 'package:freemium_hub/widgets/show_modal_sheet.dart';
 import 'package:freemium_hub/widgets/wallpaper_dialog.dart';
@@ -31,6 +31,7 @@ class _NewWallpaperViewState extends State<NewWallpaperView> {
   void initState() {
     currentIndex = widget.currentIndex;
     _pageController = PageController(initialPage: widget.currentIndex);
+
     super.initState();
   }
 
@@ -127,16 +128,28 @@ class _NewWallpaperViewState extends State<NewWallpaperView> {
                   try {
                     var downloadImage = await ImageDownloader.downloadImage(
                       widget.wallpaperImage[currentIndex].url,
-                      destination: AndroidDestinationType.directoryPictures,
+                      destination: AndroidDestinationType.directoryPictures
+                        ..inExternalFilesDir(),
                     );
                     final snackBar = SnackBar(
-                      content: const Text('Download Completed..'),
+                      content: Text(
+                        'Download Completed..',
+                        style: Theme.of(context).textTheme.headline6,
+                      ),
+                      backgroundColor: Theme.of(context).backgroundColor,
                       action: SnackBarAction(
                         label: 'Open',
                         onPressed: () async {
                           var path =
                               await ImageDownloader.findPath(downloadImage!);
-                          await ImageDownloader.open(path!);
+                          // await ImageDownloader.open(path!);
+                          await ImageDownloader.open(path!).catchError((error) {
+                            if (error is PlatformException) {
+                              if (error.code == "preview_error") {
+                                print(error.message);
+                              }
+                            }
+                          });
                         },
                       ),
                     );
@@ -146,37 +159,19 @@ class _NewWallpaperViewState extends State<NewWallpaperView> {
                     debugPrint(error.toString());
                   }
                 } else {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: const Text('Need Access to Storgae'),
-                          actions: [
-                            TextButton(
-                              onPressed: () {
-                                openAppSettings();
-                              },
-                              child: const Text('Open Settings'),
-                            ),
-                            TextButton(
-                              onPressed: () {
-                                Navigator.of(context).pop();
-                              },
-                              child: const Text('Cancel'),
-                            ),
-                          ],
-                        );
-                      });
+                  alertDialog(
+                    context: context,
+                    onPressed: () {
+                      openAppSettings();
+                    },
+                  );
                 }
               },
-             
               onPressed: () async {
                 await setWallpaperDialogBox(
                   context,
                   setOnpressed: () {
                     Navigator.pop(context);
-                    // Navigator.of(context).pop();
-
                     showActionSheet(
                       context: context,
                       url: widget.wallpaperImage[currentIndex].url,

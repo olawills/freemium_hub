@@ -62,8 +62,6 @@ class _WallpaperCategoriesState extends State<WallpaperCategories> {
                   image: DecorationImage(
                     image: ExtendedNetworkImageProvider(
                       categoryImages.elementAt(index),
-                      cache: true,
-                      printError: true,
                     ),
                     fit: BoxFit.cover,
                   ),

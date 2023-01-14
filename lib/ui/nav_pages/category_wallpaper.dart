@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:freemium_hub/models/wallpaper_models.dart';
 import 'package:freemium_hub/styles/colors.dart';
-import 'package:freemium_hub/ui/screens/wallpaper_view.dart';
+import 'package:freemium_hub/ui/screens/category_wallpaper_view.dart';
 import 'package:freemium_hub/utils/routers.dart';
 
 class CategoryWallpapers extends StatefulWidget {
