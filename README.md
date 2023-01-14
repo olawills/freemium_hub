@@ -1,11 +1,13 @@
 # freemium_hub
 
 ## Screeshot of App
-![](screenshots/2.png) ![](screenshots/3.png)  ![](screenshots/4.png)  
+![](screenshot/2.png) ![](screenshot/3.png) 
 
-![](screenshots/5.png)  ![](screenshots/6.png)  ![](screenshots/7.png) 
+![](screenshot/4.png)  ![](screenshot/5.png)  
 
-![](screenshots/8.png)
+![](screenshot/6.png)  ![](screenshot/7.png) 
+
+![](screenshot/8.png)
 
 A new Flutter project.
 
