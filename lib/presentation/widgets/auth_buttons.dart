@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:freemium_hub/presentation/ui/screens/email_sign_in_screen.dart';
-import 'package:freemium_hub/presentation/ui/screens/email_sign_up_screen.dart';
+import 'package:freemium_hub/presentation/screens/email_sign_in_screen.dart';
+import 'package:freemium_hub/presentation/screens/email_sign_up_screen.dart';
 import 'package:freemium_hub/presentation/widgets/container_divider.dart';
 import 'package:freemium_hub/presentation/widgets/new_account_header.dart';
 import 'package:freemium_hub/presentation/widgets/sign_up_buttons.dart';

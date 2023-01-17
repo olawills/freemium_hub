@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:freemium_hub/logic/models/wallpaper_models.dart';
-import 'package:freemium_hub/presentation/ui/nav_pages/new_wallpapers_sreen.dart';
-import 'package:freemium_hub/presentation/ui/nav_pages/wallpapers_category_screen.dart';
+import 'package:freemium_hub/presentation/bottom_nav_pages/new_wallpapers_screen.dart';
+import 'package:freemium_hub/presentation/bottom_nav_pages/wallpapers_category_screen.dart';
 import 'package:freemium_hub/presentation/widgets/custom_container_header.dart';
 
 class WallpaperHome extends StatefulWidget {

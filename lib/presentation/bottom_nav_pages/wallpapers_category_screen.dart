@@ -2,8 +2,8 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:freemium_hub/logic/models/wallpaper_models.dart';
-import 'package:freemium_hub/presentation/ui/nav_pages/wallpapers_category.dart';
-import 'package:freemium_hub/presentation/ui/styles/colors.dart';
+import 'package:freemium_hub/presentation/bottom_nav_pages/wallpapers_category.dart';
+import 'package:freemium_hub/presentation/styles/colors.dart';
 import 'package:freemium_hub/presentation/utils/routers.dart';
 
 class WallpaperCategories extends StatefulWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freemium_hub/presentation/ui/styles/colors.dart';
+import 'package:freemium_hub/presentation/styles/colors.dart';
 
 class BottomWidget extends StatelessWidget {
   const BottomWidget(

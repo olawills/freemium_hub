@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:flutter_wallpaper_manager/flutter_wallpaper_manager.dart';
-import 'package:freemium_hub/presentation/ui/styles/colors.dart';
+import 'package:freemium_hub/presentation/styles/colors.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'show_modal_sheet_divider.dart';
 

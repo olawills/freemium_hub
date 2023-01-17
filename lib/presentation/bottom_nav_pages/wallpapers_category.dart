@@ -3,9 +3,12 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:freemium_hub/logic/models/wallpaper_models.dart';
-import 'package:freemium_hub/presentation/ui/screens/category_wallpaper_view.dart';
-import 'package:freemium_hub/presentation/ui/styles/colors.dart';
+import 'package:freemium_hub/presentation/screens/category_wallpaper_view.dart';
+import 'package:freemium_hub/presentation/styles/colors.dart';
+import 'package:freemium_hub/presentation/utils/enums.dart';
 import 'package:freemium_hub/presentation/utils/routers.dart';
+import 'package:freemium_hub/data/internet_cubit/internet_cubit_cubit.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CategoryWallpapers extends StatefulWidget {
   final String category;
@@ -77,17 +80,7 @@ class _CategoryWallpapersState extends State<CategoryWallpapers> {
                 return StaggeredTile.count(1, index.isEven ? 1.4 : 1.4);
               },
             );
-          }
-          //  else if (snapshot.connectionState ==
-          //       ConnectionState.none) {
-          //     return const Center(
-          //       child: Text(
-          //         'Check your network and try again later...',
-          //       ),
-          //     );
-          //   }
-
-          else {
+          } else {
             return Center(
               child: CircularProgressIndicator(
                 color: DarkThemeColors.selectedIconColor,

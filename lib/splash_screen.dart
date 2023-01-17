@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:freemium_hub/presentation/ui/intro_screens/intro_screen.dart';
-import 'package:freemium_hub/presentation/ui/screens/home_page.dart';
+import 'package:freemium_hub/presentation/intro_screens/intro_screen.dart';
+import 'package:freemium_hub/presentation/screens/home_page.dart';
 import 'package:freemium_hub/presentation/utils/routers.dart';
 
 class SplashScreen extends StatefulWidget {

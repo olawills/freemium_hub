@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:freemium_hub/presentation/ui/screens/home_page.dart';
+import 'package:freemium_hub/presentation/screens/home_page.dart';
 import 'package:freemium_hub/presentation/utils/routers.dart';
 import 'package:freemium_hub/presentation/widgets/auth_buttons.dart';
 import 'package:freemium_hub/presentation/widgets/container_divider.dart';

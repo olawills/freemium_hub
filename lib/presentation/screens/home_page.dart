@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:freemium_hub/presentation/ui/nav_pages/home.dart';
-import 'package:freemium_hub/presentation/ui/screens/favorite_page.dart';
-import 'package:freemium_hub/presentation/ui/screens/settings_page.dart';
+import 'package:freemium_hub/presentation/bottom_nav_pages/home.dart';
+import 'package:freemium_hub/presentation/screens/favorite_page.dart';
+import 'package:freemium_hub/presentation/screens/settings_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
