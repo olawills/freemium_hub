@@ -1,8 +1,7 @@
 import 'dart:async';
-
-import 'package:bloc/bloc.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'package:freemium_hub/data/cubit_imports.dart';
 import 'package:freemium_hub/presentation/utils/enums.dart';
 
 part 'internet_cubit_state.dart';

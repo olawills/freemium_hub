@@ -2,12 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:freemium_hub/presentation/styles/colors.dart';
 
 class BottomWidget extends StatelessWidget {
-  const BottomWidget(
-      {Key? key, required this.onPressed, required this.downloadOnpressed})
-      : super(key: key);
+  const BottomWidget({
+    Key? key,
+    required this.onPressed,
+    required this.downloadOnPressed,
+    required this.favoriteOnPressed,
+  }) : super(key: key);
 
   final VoidCallback onPressed;
-  final VoidCallback downloadOnpressed;
+  final VoidCallback downloadOnPressed;
+  final VoidCallback favoriteOnPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,7 @@ class BottomWidget extends StatelessWidget {
                     height: 90,
                     width: 80,
                     child: InkResponse(
-                      onTap: () {},
+                      onTap: favoriteOnPressed,
                       child: CircleAvatar(
                         // radius: 20,
                         backgroundColor: DarkThemeColors.darkThemeAppbar,
@@ -45,7 +49,7 @@ class BottomWidget extends StatelessWidget {
                   height: 90,
                   width: 80,
                   child: InkResponse(
-                    onTap: downloadOnpressed,
+                    onTap: downloadOnPressed,
                     child: CircleAvatar(
                       // radius: 20,
                       backgroundColor: DarkThemeColors.darkThemeAppbar,

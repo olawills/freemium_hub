@@ -2,11 +2,12 @@ import 'package:extended_image/extended_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:freemium_hub/data/internet_cubit/internet_cubit_cubit.dart';
 import 'package:freemium_hub/logic/models/wallpaper_models.dart';
 import 'package:freemium_hub/presentation/screens/new_wallpaper_view.dart';
 import 'package:freemium_hub/presentation/utils/enums.dart';
 import 'package:freemium_hub/presentation/utils/routers.dart';
+
+import '../../data/cubit_imports.dart';
 
 class NewWallPaperScreen extends StatefulWidget {
   final List<WallpaperModels> wallpaperModels;

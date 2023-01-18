@@ -1,16 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:freemium_hub/data/cubit_imports.dart';
 
-class WallpaperModels {
+class WallpaperModels extends Equatable {
   final String url;
   final String category;
   final String favoriteId;
-  bool isFavorites;
+  bool? isFavorites;
 
   WallpaperModels({
     required this.url,
     required this.category,
     required this.favoriteId,
-    this.isFavorites = false,
+    this.isFavorites,
   });
 
   static WallpaperModels fromDocumentSnapshot(DocumentSnapshot snapshot) {
@@ -21,4 +22,12 @@ class WallpaperModels {
       isFavorites: false,
     );
   }
+
+  @override
+  List<Object?> get props => [
+        url,
+        category,
+        favoriteId,
+        isFavorites,
+      ];
 }

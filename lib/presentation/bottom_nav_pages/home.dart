@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:freemium_hub/logic/models/wallpaper_models.dart';
 import 'package:freemium_hub/presentation/bottom_nav_pages/new_wallpapers_screen.dart';
 import 'package:freemium_hub/presentation/bottom_nav_pages/wallpapers_category_screen.dart';
+import 'package:freemium_hub/presentation/screens/favorite_page.dart';
 import 'package:freemium_hub/presentation/widgets/custom_container_header.dart';
 
 class WallpaperHome extends StatefulWidget {
@@ -13,10 +14,22 @@ class WallpaperHome extends StatefulWidget {
 }
 
 class _WallpaperHomeState extends State<WallpaperHome> {
-  final PageController _pageController = PageController();
+  late PageController _pageController;
   int pageIndex = 0;
   bool selected = true;
   bool onLastPage = false;
+
+  @override
+  void initState() {
+    _pageController = PageController();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   // List<String> foldername = [
   //   'Abstract',
@@ -146,6 +159,7 @@ class _WallpaperHomeState extends State<WallpaperHome> {
         return NewWallPaperScreen(wallpaperModels: wallpaperModels);
       case 1:
         return WallpaperCategories(wallpaperModels: wallpaperModels);
+
       default:
         return const CircularProgressIndicator();
     }

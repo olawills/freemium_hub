@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:freemium_hub/logic/models/wallpaper_models.dart';
 import 'package:freemium_hub/presentation/bottom_nav_pages/home.dart';
 import 'package:freemium_hub/presentation/screens/favorite_page.dart';
 import 'package:freemium_hub/presentation/screens/settings_page.dart';
@@ -17,14 +18,29 @@ class _HomePageState extends State<HomePage> {
     // {'icon': Icons.download, 'title': 'Downloads'},
     {'icon': Icons.settings, 'title': 'Settings'},
   ];
+
   final List<Widget> screens = const [
     WallpaperHome(),
-    FavoritePage(),
+    FavoritePage(
+      wallpaperModels: [],
+    ),
     SettingsPage(),
   ];
   int currentIndex = 0;
-  final PageController _pageController = PageController(initialPage: 0);
+  late PageController _pageController;
   int currentSelected = 0;
+
+  @override
+  void initState() {
+    _pageController = PageController(initialPage: 0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

@@ -110,7 +110,8 @@ class _CategoryWallpaperViewState extends State<CategoryWallpaperView>
             ),
           ),
           BottomWidget(
-            downloadOnpressed: () async {
+            favoriteOnPressed: (){},
+            downloadOnPressed: () async {
               var status = await Permission.storage.request();
               if (status.isGranted) {
                 try {
